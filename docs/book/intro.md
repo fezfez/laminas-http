@@ -7,10 +7,10 @@ abstractions:
 
 - Context-less `Request` and `Response` classes that expose a fluent API for
   introspecting several aspects of HTTP messages:
-  - Request line information and response status information
-  - Parameters, such as those found in POST and GET
-  - Message Body
-  - Headers
+    - Request line information and response status information
+    - Parameters, such as those found in POST and GET
+    - Message Body
+    - Headers
 - A client implementation with various adapters that allow for sending requests
   and introspecting responses.
 
