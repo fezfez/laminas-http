@@ -64,27 +64,27 @@ brevity, we map the following references to the following classes or namespaces:
 - `Headers`: `Laminas\Http\Headers`
 - `PluginClassLocator`: `Laminas\Loader\PluginClassLocator`
 
-Method signature                                                          | Description
-------------------------------------------------------------------------- | -----------
-`static fromString(string $string) : Headers`                             | Parses a string for headers, and aggregates them, in order, a new `Headers` instance, primarily as strings until they are needed (they will be lazy loaded).
-`setPluginClassLoader(PluginClassLocator $pluginClassLoader) : self`      | Set an alternate implementation for the plugin class loader.
-`getPluginClassLoader() : PluginClassLocator`                             | Return an instance of a `PluginClassLocator`; lazy-load and inject map if necessary.
-`addHeaders(array|Traversable $headers) : self`                           | Add many headers at once; expects an array (or `Traversable` object) of type/value pairs.
-`addHeaderLine(string $headerFieldNameOrLine, string $fieldValue) : self` | Add a raw header line, either as separate name and value arguments, or as a single string in the form `name: value` This method allows for lazy-loading in that the parsing and instantiation of a `HeaderInterface` implementation will be delayed until they are retrieved by either `get()` or `current()`.
-`addHeader(HeaderInterface $header) : self`                               | Add a header instance to the container; for raw values see `addHeaderLine()` and `addHeaders()`.
-`removeHeader(HeaderInterface $header) : bool`                            | Remove a Header from the container.
-`clearHeaders() : self`                                                   | Removes all headers from the container.
-`get(string $name) : false|HeaderInterface|ArrayIterator`                 | Get all values for a given header. If none are found, `false` is returned. If the header is a single-value header, a `HeaderInterface` is returned. If the header is a multi-value header, an `ArrayIterator` containing all values is returned.
-`has(string $name) : bool`                                                | Test for existence of a header.
-`next() : void`                                                           | Advance the pointer for this object as an iterator.
-`key() : mixed`                                                           | Return the current key for this object as an iterator.
-`valid() : bool`                                                          | Is this iterator still valid?
-`rewind() : void`                                                         | Reset the internal pointer for this object as an iterator.
-`current() : HeaderInterface`                                             | Return the current value for this iterator, lazy loading it if need be.
-`count() : int`                                                           | Return the number of headers in this container. If all headers have not been parsed, the actual count could decrease if `MultipleHeader` instances exist. If you need an exact count, iterate.
-`toString() : string`                                                     | Render all headers at once.  This method handles the normal iteration of headers; it is up to the concrete classes to prepend with the appropriate status/request line.
-`toArray() : array`                                                       | Return all headers as an associative array.
-`forceLoading() : bool`                                                   | By calling this, it will force parsing and loading of all headers, ensuring `count()` is accurate.
+ Method signature                                                          | Description
+---------------------------------------------------------------------------| -----------
+ `static fromString(string $string) : Headers`                             | Parses a string for headers, and aggregates them, in order, a new `Headers` instance, primarily as strings until they are needed (they will be lazy loaded).
+ `setPluginClassLoader(PluginClassLocator $pluginClassLoader) : self`      | Set an alternate implementation for the plugin class loader.
+ `getPluginClassLoader() : PluginClassLocator`                             | Return an instance of a `PluginClassLocator`; lazy-load and inject map if necessary.
+ `addHeaders(array\|Traversable $headers) : self`                          | Add many headers at once; expects an array (or `Traversable` object) of type/value pairs.
+ `addHeaderLine(string $headerFieldNameOrLine, string $fieldValue) : self` | Add a raw header line, either as separate name and value arguments, or as a single string in the form `name: value` This method allows for lazy-loading in that the parsing and instantiation of a `HeaderInterface` implementation will be delayed until they are retrieved by either `get()` or `current()`.
+ `addHeader(HeaderInterface $header) : self`                               | Add a header instance to the container; for raw values see `addHeaderLine()` and `addHeaders()`.
+ `removeHeader(HeaderInterface $header) : bool`                            | Remove a Header from the container.
+ `clearHeaders() : self`                                                   | Removes all headers from the container.
+ `get(string $name) : false\|HeaderInterface\|ArrayIterator`               | Get all values for a given header. If none are found, `false` is returned. If the header is a single-value header, a `HeaderInterface` is returned. If the header is a multi-value header, an `ArrayIterator` containing all values is returned.
+ `has(string $name) : bool`                                                | Test for existence of a header.
+ `next() : void`                                                           | Advance the pointer for this object as an iterator.
+ `key() : mixed`                                                           | Return the current key for this object as an iterator.
+ `valid() : bool`                                                          | Is this iterator still valid?
+ `rewind() : void`                                                         | Reset the internal pointer for this object as an iterator.
+ `current() : HeaderInterface`                                             | Return the current value for this iterator, lazy loading it if need be.
+ `count() : int`                                                           | Return the number of headers in this container. If all headers have not been parsed, the actual count could decrease if `MultipleHeader` instances exist. If you need an exact count, iterate.
+ `toString() : string`                                                     | Render all headers at once.  This method handles the normal iteration of headers; it is up to the concrete classes to prepend with the appropriate status/request line.
+ `toArray() : array`                                                       | Return all headers as an associative array.
+ `forceLoading() : bool`                                                   | By calling this, it will force parsing and loading of all headers, ensuring `count()` is accurate.
 
 ## HeaderInterface Methods
 
@@ -110,13 +110,13 @@ namespaces:
 - `AcceptFieldValuePart`: `Laminas\Http\Header\Accept\FieldValuePart\AcceptFieldValuePart`
 - `InvalidArgumentException`: `Laminas\Http\Header\Exception\InvalidArgumentException`
 
-Method signature                                                | Description
---------------------------------------------------------------- | -----------
-`parseHeaderLine(string $headerLine) : void`                    | Parse the given header line and add the values discovered to the instance.
-`getFieldValuePartsFromHeaderLine(string $headerLine) : array`  | Parse the field value parts represented by an Accept* header line.  Throws `InvalidArgumentException` if the header is invalid.
-`getFieldValue(array|null $values = null) : string`             | Get field value.
-`match(array|string $matchAgainst) : bool|AcceptFieldValuePart` | Match a media string against this header. Returns the matched value or false.
-`getPrioritized() : array`                                      | Returns all the keys, values and parameters this header represents.
+ Method signature                                                  | Description
+-------------------------------------------------------------------| -----------
+ `parseHeaderLine(string $headerLine) : void`                      | Parse the given header line and add the values discovered to the instance.
+ `getFieldValuePartsFromHeaderLine(string $headerLine) : array`    | Parse the field value parts represented by an Accept* header line.  Throws `InvalidArgumentException` if the header is invalid.
+ `getFieldValue(array\|null $values = null) : string`              | Get field value.
+ `match(array\|string $matchAgainst) : bool\|AcceptFieldValuePart` | Match a media string against this header. Returns the matched value or false.
+ `getPrioritized() : array`                                        | Returns all the keys, values and parameters this header represents.
 
 ## AbstractDate Methods
 
@@ -136,10 +136,10 @@ Method signature                                     | Description
 `static fromTimeString(string $time) : AbstractDate` | Create date-based header from `strtotime()`-compatible string.
 `static setDateFormat(int $format) : void`           | Set date output format; should be an index from the implementation's `$dateFormat` static property.
 `static getDateFormat() : string`                    | Return current date output format.
-`setDate(string|DateTime $date) : self`              | Set the date for this header; this can be a string or an instance of `DateTime`.  Throws `InvalidArgumentException` if the date is neither a valid string nor an instance of `DateTime`.
+`setDate(string\|DateTime $date) : self`              | Set the date for this header; this can be a string or an instance of `DateTime`.  Throws `InvalidArgumentException` if the date is neither a valid string nor an instance of `DateTime`.
 `getDate() : string`                                 | Return string representation of the date for this header.
-`compareTo(string|DateTime $date) : int`             | Compare provided date to date for this header. Returns `< 0` if date in header is less than `$date`; `> 0` if it's greater, and `= 0` if they are equal. See [strcmp](http://www.php.net/manual/en/function.strcmp.php).
-`date() | DateTime`                                  | Return date for this header as an instance of `DateTime`.
+`compareTo(string\|DateTime $date) : int`             | Compare provided date to date for this header. Returns `< 0` if date in header is less than `$date`; `> 0` if it's greater, and `= 0` if they are equal. See [strcmp](http://www.php.net/manual/en/function.strcmp.php).
+`date() \| DateTime`                                  | Return date for this header as an instance of `DateTime`.
 
 ## AbstractLocation Methods
 
@@ -155,7 +155,7 @@ namespaces:
 
 Method signature                 | Description
 -------------------------------- | -----------
-`setUri(string|Uri $uri) : self` | Set the URI for this header; throws `InvalidArgumentException` for invalid `$uri` arguments.
+`setUri(string\|Uri $uri) : self` | Set the URI for this header; throws `InvalidArgumentException` for invalid `$uri` arguments.
 `getUri() : string`              | Return the URI for this header.
 `uri() : Uri`                    | Return the `Uri` instance for this header.
 
@@ -172,7 +172,7 @@ Extends [AbstractAccept](#abstractaccept-methods).
 
 Method signature                                             | Description
 ------------------------------------------------------------ | -----------
-`addMediaType(string $type, int|float $priority = 1) : self` | Add a media type, with the given priority.
+`addMediaType(string $type, int\|float $priority = 1) : self` | Add a media type, with the given priority.
 `hasMediaType(string $type): bool`                           | Does the header have the requested media type?
 
 ### AcceptCharset
@@ -181,7 +181,7 @@ Extends [AbstractAccept](#abstractaccept-methods).
 
 Method signature                                           | Description
 ---------------------------------------------------------- | -----------
-`addCharset(string $type, int|float $priority = 1) : self` | Add a charset, with the given priority.
+`addCharset(string $type, int\|float $priority = 1) : self` | Add a charset, with the given priority.
 `hasCharset(string $type) : bool`                          | Does the header have the requested charset?
 
 ### AcceptEncoding
@@ -190,7 +190,7 @@ Extends [AbstractAccept](#abstractaccept-methods).
 
 Method signature                                            | Description
 ----------------------------------------------------------- | -----------
-`addEncoding(string $type, int|float $priority = 1) : self` | Add an encoding, with the given priority.
+`addEncoding(string $type, int\|float $priority = 1) : self` | Add an encoding, with the given priority.
 `hasEncoding(string $type) : bool`                          | Does the header have the requested encoding?
 
 ### AcceptLanguage
@@ -199,7 +199,7 @@ Extends [AbstractAccept](#abstractaccept-methods).
 
 Method signature                                           | Description
 ---------------------------------------------------------- | -----------
-`addLanguage(string $type, int|float $priority = 1): self` | Add a language, with the given priority.
+`addLanguage(string $type, int\|float $priority = 1): self` | Add a language, with the given priority.
 `hasLanguage(string $type) : bool`                         | Does the header have the requested language?
 
 ### AcceptRanges
@@ -222,9 +222,9 @@ Method signature                                     | Description
 ---------------------------------------------------- | -----------
 `getAllMethods() : string[]`                         | Get list of all defined methods.
 `getAllowedMethods() : string[]`                     | Get list of allowed methods.
-`allowMethods(array|string $allowedMethods) : self`  | Allow methods or list of methods.
-`disallowMethods(array|string $allowedMethods) self` | Disallow methods or list of methods.
-`denyMethods(array|string $allowedMethods) : self`   | Convenience alias for `disallowMethods()`.
+`allowMethods(array\|string $allowedMethods) : self`  | Allow methods or list of methods.
+`disallowMethods(array\|string $allowedMethods) self` | Disallow methods or list of methods.
+`denyMethods(array\|string $allowedMethods) : self`   | Convenience alias for `disallowMethods()`.
 `isAllowedMethod(string $method) : bool`             | Check whether method is allowed.
 
 ### AuthenticationInfo
@@ -240,9 +240,9 @@ No additional methods.
 Method signature                                              | Description
 ------------------------------------------------------------- | -----------
 `isEmpty(): bool`                                             | Checks if the internal directives array is empty.
-`addDirective(string $key, string|bool $value = true) : self` | Add a directive. For directives like `max-age=60`, call as `addDirective('max-age', 60)`. For directives like `private`, use the default `$value` (`true`).
+`addDirective(string $key, string\|bool $value = true) : self` | Add a directive. For directives like `max-age=60`, call as `addDirective('max-age', 60)`. For directives like `private`, use the default `$value` (`true`).
 `hasDirective(string $key) : bool`                            | Check the internal directives array for a directive.
-`getDirective(string $key) : null|string`                     | Fetch the value of a directive from the internal directive array.
+`getDirective(string $key) : null\|string`                     | Fetch the value of a directive from the internal directive array.
 `removeDirective(string $key) : self`                         | Remove a directive.
 
 ### Connection
@@ -308,15 +308,15 @@ No additional methods.
 
 ### ContentType
 
-Method signature                                  | Description
-------------------------------------------------- | -----------
-`match(array|string $matchAgainst) : bool|string` | Determine if the mediatype value in this header matches the provided criteria.
-`getMediaType() : string`                         | Get the media type.
-`setMediaType(string $mediaType) : self`          | Set the media type.
-`getParameters() : array`                         | Get any additional content-type parameters currently set.
-`setParameters(array $parameters) : self`         | Set additional content-type parameters.
-`getCharset() : null|string`                      | Get the content-type character set encoding, if any.
-`setCharset(string $charset) : self`              | Set the content-type character set encoding.
+ Method signature                                    | Description
+-----------------------------------------------------| -----------
+ `match(array\|string $matchAgainst) : bool\|string` | Determine if the mediatype value in this header matches the provided criteria.
+ `getMediaType() : string`                           | Get the media type.
+ `setMediaType(string $mediaType) : self`            | Set the media type.
+ `getParameters() : array`                           | Get any additional content-type parameters currently set.
+ `setParameters(array $parameters) : self`           | Set additional content-type parameters.
+ `getCharset() : null\|string`                       | Get the content-type character set encoding, if any.
+ `setCharset(string $charset) : self`                | Set the content-type character set encoding.
 
 ### Cookie
 
@@ -442,15 +442,15 @@ Method signature                                                      | Descript
 `getValue() : string`                                                 | Retrieve the cookie value.
 `setValue(string $value) : self`                                      | Set the cookie value.
 `getExpires() : int`                                                  | Retrieve the expiration date for the cookie.
-`setExpires(int|string $expires) : self`                              | Set the cookie expiration timestamp; null indicates a session cookie.
+`setExpires(int\|string $expires) : self`                              | Set the cookie expiration timestamp; null indicates a session cookie.
 `getPath() : string`                                                  | Retrieve the URI path the cookie is bound to.
 `setPath(string $path) : self`                                        | Set the URI path the cookie is bound to.
 `getDomain() : string`                                                | Retrieve the domain the cookie is bound to.
 `setDomain(string $domain) : self`                                    | Set the domain the cookie is bound to.
 `getMaxAge() : int`                                                   | Retrieve the maximum age for the cookie.
-`setMaxAge(int|string $maxAge) : self`                                | Set the maximum age for the cookie.
+`setMaxAge(int\|string $maxAge) : self`                                | Set the maximum age for the cookie.
 `getVersion() : int`                                                  | Retrieve the cookie version.
-`setVersion(int|string $version) : self`                              | Set the cookie version.
+`setVersion(int\|string $version) : self`                              | Set the cookie version.
 `isSecure(): bool`                                                    | Whether the cookies contains the Secure flag.
 `setSecure(bool $secure) : self`                                      | Set whether the cookies contain the Secure flag.
 `isHttponly() : bool`                                                 | Whether the cookies can be accessed via the HTTP protocol only.

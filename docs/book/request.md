@@ -72,22 +72,22 @@ Method signature                                                            | De
 `static fromString(string $string) : Request`                               | A factory that produces a `Request` object from a well-formed HTTP request message string.
 `setMethod(string $method) : self`                                          | Set the method for this request.
 `getMethod() : string`                                                      | Return the method for this request.
-`setUri(string|Uri $uri) : self`                                            | Set the URI/URL for this request; this can be a string or an instance of `Laminas\Uri\Http`.
+`setUri(string\|Uri $uri) : self`                                            | Set the URI/URL for this request; this can be a string or an instance of `Laminas\Uri\Http`.
 `getUri() : Uri`                                                            | Return the URI for this request object.
 `getUriString() : string`                                                   | Return the URI for this request object as a string.
 `setVersion(string $version) : self`                                        | Set the HTTP version for this object, one of 1.0, 1.1 or 2 (`Request::VERSION_10`, `Request::VERSION_11`, `Request::VERSION_2`). HTTP/2 support was added in laminas-http 2.10.0.
 `getVersion() : string`                                                     | Return the HTTP version for this request.
 `setQuery(Parameters $query) : self`                                        | Provide an alternate Parameter Container implementation for query parameters in this object. (This is NOT the primary API for value setting; for that, see `getQuery()`).
-`getQuery(string|null $name, mixed|null $default) : null|string|Parameters` | Return the parameter container responsible for query parameters or a single query parameter based on `$name`.
+`getQuery(string\|null $name, mixed\|null $default) : null\|string\|Parameters` | Return the parameter container responsible for query parameters or a single query parameter based on `$name`.
 `setPost(Parameters $post) : self`                                          | Provide an alternate Parameter Container implementation for POST parameters in this object. (This is NOT the primary API for value setting; for that, see `getPost()`).
-`getPost(string|null $name, mixed|null $default) : null|string|Parameters`  | Return the parameter container responsible for POST parameters or a single POST parameter, based on `$name`.
+`getPost(string\|null $name, mixed\|null $default) : null\|string\|Parameters`  | Return the parameter container responsible for POST parameters or a single POST parameter, based on `$name`.
 `getCookie() : Header\Cookie`                                               | Return the Cookie header, this is the same as calling `$request->getHeaders()->get('Cookie');`.
 `setFiles(Parameters $files) : self`                                        | Provide an alternate Parameter Container implementation for file parameters in this object, (This is NOT the primary API for value setting; for that, see `getFiles()`).
-`getFiles(string|null $name, mixed|null $default) : null|string|Parameters` | Return the parameter container responsible for file parameters or a single file parameter, based on `$name`.
+`getFiles(string\|null $name, mixed\|null $default) : null\|string\|Parameters` | Return the parameter container responsible for file parameters or a single file parameter, based on `$name`.
 `setHeaders(Headers $headers) : self`                                       | Provide an alternate Parameter Container implementation for headers in this object, (this is NOT the primary API for value setting, for that see `getHeaders()`).
-`getHeaders(string|null $name, mixed|null $default) : mixed`                | Return the container responsible for storing HTTP headers. This container exposes the primary API for manipulating headers set in the HTTP request. See the section on [Headers](headers.md) for more information. Return value is based on `$name`; `null` returns `Headers`, while a matched header returns a `Header\HeaderInterface` implementation for single-value headers or an `ArrayIterator` for multi-value headers.
-`setMetadata(string|int|array|Traversable $spec, mixed $value) : self`      | Set message metadata.  Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata container.
-`getMetadata(null|string|int $key, null|mixed $default) : mixed`            | Retrieve all metadata or a single metadatum as specified by key.
+`getHeaders(string\|null $name, mixed\|null $default) : mixed`                | Return the container responsible for storing HTTP headers. This container exposes the primary API for manipulating headers set in the HTTP request. See the section on [Headers](headers.md) for more information. Return value is based on `$name`; `null` returns `Headers`, while a matched header returns a `Header\HeaderInterface` implementation for single-value headers or an `ArrayIterator` for multi-value headers.
+`setMetadata(string\|int\|array\|Traversable $spec, mixed $value) : self`      | Set message metadata.  Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata container.
+`getMetadata(null\|string\|int $key, null\|mixed $default) : mixed`            | Retrieve all metadata or a single metadatum as specified by key.
 `setContent(mixed $value) : self`                                           | Set request body (content).
 `getContent() : mixed`                                                      | Get request body (content).
 `isOptions() : bool`                                                        | Is this an OPTIONS method request?
