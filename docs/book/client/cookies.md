@@ -102,10 +102,10 @@ Besides the methods demonstrated in the examples, `Laminas\Http\Cookies` defines
 Method signature                                                    | Description
 ------------------------------------------------------------------- | -----------
 `static fromResponse(Response $response, string $refUri) : Cookies` | Create a `Cookies` instance from a response and the request URI. Parses all `Set-Cookie` headers, maps them to the URI, and aggregates them.
-`addCookie(string\|SetCookie $cookie, string $refUri = null) : void` | Add a cookie, mapping it to the given URI. If no URI is provided, it will be inferred from the cookie value's domain and path.
+`addCookie(string|SetCookie $cookie, string $refUri = null) : void` | Add a cookie, mapping it to the given URI. If no URI is provided, it will be inferred from the cookie value's domain and path.
 `addCookiesFromResponse(Response $response, string $refUri) : void` | Add all `Set-Cookie` values from the provided response, mapping to the given URI.
-`getAllCookies(int $retAs = self::COOKIE_OBJECT) : array\|string`    | Retrieve all cookies. Returned array will have either `SetCookie` instances (the default), strings for each `Set-Cookie` declaration, or a single string containing all declarations, based on the `COOKIE_*` constant used.
-`getCookie(/*...*/) : string\|SetCookie`                           | Retrieve a single cookie by name for the given URI. See below for argument details.
+`getAllCookies(int $retAs = self::COOKIE_OBJECT) : array|string`    | Retrieve all cookies. Returned array will have either `SetCookie` instances (the default), strings for each `Set-Cookie` declaration, or a single string containing all declarations, based on the `COOKIE_*` constant used.
+`getCookie(/* ... */) : string|SetCookie`                           | Retrieve a single cookie by name for the given URI. See below for argument details.
 `getMatchingCookies(/* ... */) : array`                             | See below for details.
 `isEmpty() : bool`                                                  | Whether or not the instance aggregates any cookies currently.
 `reset() : void`                                                    | Clear all aggregated cookies from the instance.

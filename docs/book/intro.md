@@ -14,7 +14,7 @@ abstractions:
 - A client implementation with various adapters that allow for sending requests
   and introspecting responses.
 
-> ### Not PSR-7!
+> ## Not PSR-7
 >
 > This library **does not** support [PSR-7](http://www.php-fig.org/psr/psr-7), as
 > it predates that specification. For PSR-7 support, please see our
