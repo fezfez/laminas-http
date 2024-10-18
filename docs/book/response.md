@@ -94,8 +94,8 @@ Method signature                                                       | Descrip
 `decodeChunkedBody(string $body) : string`                             | Decode a "chunked" transfer-encoded body and return the decoded text.
 `decodeGzip(string $body) : string`                                    | Decode a gzip encoded message (when `Content-Encoding` indicates gzip). Currently requires PHP with zlib support.
 `decodeDeflate(string $body) : string`                                 | Decode a zlib deflated message (when `Content-Encoding` indicates deflate). Currently requires PHP with zlib support.
-`setMetadata(string|int|array|Traversable $spec, mixed $value) : self` | Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata container.
-`getMetadata(null|string|int $key, null|mixed $default) : mixed`       | Retrieve all metadata or a single metadatum as specified by key.
+`setMetadata(string\|int\|array\|Traversable $spec, mixed $value) : self` | Non-destructive setting of message metadata; always adds to the metadata, never overwrites the entire metadata container.
+`getMetadata(null\|string\|int $key, null\|mixed $default) : mixed`       | Retrieve all metadata or a single metadatum as specified by key.
 `setContent(mixed $value) : self`                                      | Set message content.
 `getContent() : mixed`                                                 | Get raw message content.
 `getBody() : mixed`                                                    | Get decoded message content.
