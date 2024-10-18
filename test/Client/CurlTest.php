@@ -486,7 +486,6 @@ class CurlTest extends CommonHttpTests
      */
     public function testNoCaseSensitiveHeaderName()
     {
-        var_dump($this->baseuri);exit;
         $this->client->setUri($this->baseuri . 'Laminas7683-chunked.php');
 
         $adapter = new Adapter\Curl();
