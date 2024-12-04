@@ -1,4 +1,4 @@
-# HTTP Client Advanced Usage
+# Advanced Usage
 
 ## HTTP redirections
 

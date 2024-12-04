@@ -1,4 +1,4 @@
-# The Request Class
+# Request
 
 `Laminas\Http\Request` is responsible for providing a fluent API that allows a
 developer to interact with all the various parts of an HTTP request.

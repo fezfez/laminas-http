@@ -1,4 +1,4 @@
-# HTTP Client Connection Adapters
+# Connection Adapters
 
 `Laminas\Http\Client` is based on a connection adapter design. The connection adapter is the object in
 charge of performing the actual connection to the server, as well as writing requests and reading
