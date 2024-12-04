@@ -8,6 +8,7 @@ use Laminas\Http\Client as HTTPClient;
 use Laminas\Http\Client\Adapter\AdapterInterface;
 use Laminas\Http\Client\Adapter\Socket;
 use Laminas\Http\Request;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 use function filter_var;
@@ -18,10 +19,9 @@ use const FILTER_VALIDATE_BOOLEAN;
 
 /**
  * This are the test for the prototype of Laminas\Http\Client
- *
- * @group      Laminas_Http
- * @group      Laminas_Http_Client
  */
+#[Group('Laminas_Http')]
+#[Group('Laminas_Http_Client')]
 class UseCaseTest extends TestCase
 {
     /**
@@ -30,28 +30,24 @@ class UseCaseTest extends TestCase
      *
      * @var string
      */
-    protected $baseuri;
+    protected string|array|false $baseuri;
 
     /**
      * Common HTTP client
      *
      * @var HTTPClient
      */
-    protected $client;
+    protected HTTPClient|null $client;
 
     /**
      * Common HTTP client adapter
-     *
-     * @var AdapterInterface
      */
-    protected $adapter;
+    protected AdapterInterface $adapter;
 
     /**
      * Configuration array
-     *
-     * @var array
      */
-    protected $config = [
+    protected array $config = [
         'adapter' => Socket::class,
     ];
 
@@ -83,20 +79,20 @@ class UseCaseTest extends TestCase
         $this->client = null;
     }
 
-    public function testHttpGet()
+    public function testHttpGet(): void
     {
         $this->client->setMethod(Request::METHOD_GET);
         $response = $this->client->send();
         $this->assertTrue($response->isSuccess());
     }
 
-    public function testStaticHttpGet()
+    public function testStaticHttpGet(): void
     {
         //        $response= HTTPClient::get($this->baseuri);
 //        $this->assertTrue($response->isSuccess());
     }
 
-    public function testRequestHttpGet()
+    public function testRequestHttpGet(): void
     {
         $client  = new HTTPClient();
         $request = new Request();
