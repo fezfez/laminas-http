@@ -1,4 +1,4 @@
-# The Response Class
+# Response
 
 `Laminas\Http\Response` is responsible for providing a fluent API that allows a
 developer to interact with all the various parts of an HTTP response.

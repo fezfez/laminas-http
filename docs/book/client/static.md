@@ -1,4 +1,4 @@
-# HTTP Client - Static Usage
+# Static Usage
 
 laminas-http provides another client implementation, `Laminas\Http\ClientStatic`, a
 static HTTP client which exposes a simplified API for quickly performing one-off `GET`

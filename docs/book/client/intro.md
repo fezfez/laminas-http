@@ -1,4 +1,4 @@
-# HTTP Client
+# Introduction
 
 `Laminas\Http\Client` provides an interface for performing Hyper-Text Transfer
 Protocol (HTTP) requests. `Laminas\Http\Client` supports all basic features
