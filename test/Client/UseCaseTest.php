@@ -37,7 +37,7 @@ class UseCaseTest extends TestCase
      *
      * @var HTTPClient
      */
-    protected HTTPClient|null $client;
+    private HTTPClient $client;
 
     /**
      * Common HTTP client adapter
