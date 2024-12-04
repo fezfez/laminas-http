@@ -30,7 +30,7 @@ class UseCaseTest extends TestCase
      *
      * @var string
      */
-    protected string|array|false $baseuri;
+    private string $baseuri;
 
     /**
      * Common HTTP client
