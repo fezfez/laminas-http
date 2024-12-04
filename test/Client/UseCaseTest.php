@@ -27,15 +27,11 @@ class UseCaseTest extends TestCase
     /**
      * The bast URI for this test, containing all files in the files directory
      * Should be set in phpunit.xml or phpunit.xml.dist
-     *
-     * @var string
      */
     private string $baseuri;
 
     /**
      * Common HTTP client
-     *
-     * @var HTTPClient
      */
     private HTTPClient $client;
 
@@ -69,14 +65,6 @@ class UseCaseTest extends TestCase
                 HTTPClient::class
             ));
         }
-    }
-
-    /**
-     * Clean up the test environment
-     */
-    protected function tearDown(): void
-    {
-        $this->client = null;
     }
 
     public function testHttpGet(): void
